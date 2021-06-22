@@ -8,32 +8,7 @@ const router = express.Router();
 //============================
 // ROUTES
 //============================
-/**
- * VIEW: home
- */
-router.get('/', (req, res) => {
-    Todo.getAll((err, data) => {
-        if (err) throw err;
 
-        const completedTodos = data.filter(todo => todo.done);
-        const incompleteTodos = data.filter(todo => !todo.done);
-
-        res.render('index', {
-            completedTodos,
-            incompleteTodos
-        });
-    });
-});
-
-/**
- * API: all todos
- */
-router.get('/todos', (req, res) => {
-    Todo.getAll((err, data) => {
-        if (err) throw err;
-        res.json(data);
-    });
-});
 
 /**
  * API: add todo
